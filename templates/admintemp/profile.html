@@ -1,0 +1,24 @@
+{% extends 'admintemp/admin_home.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+  <style>
+    .img{
+    border-radius:10%
+    }
+  </style>
+  <div class="text-center">
+    <div class="card m-auto p-1 mt-5 mb-5" style="width:18rem;">
+      {% for i in data %}
+      <img class="card-img-top img p-2" src="{{i.photo.url" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">{{i.username}}</h5>
+        <p class="card-text">Name: {{i.name}}</p>
+        <p class="card-text">Gender: {{i.gender}}</p>
+        <p class="card-text">Contact Number: {{i.contact}}</p>
+        <p class="card-text">Email: {{i.email}}</p>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  {% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'admintemp/admin_home.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="card">
+    <div class="card-body">
+        <table class="table">
+            <thead>
+            <th>sl No.</th>
+            <th>batch</th>
+            <th>time</th>
+            <th>delete</th>
+            </thead>
+            {% for i in data %}
+            <tbody>
+            <td>{{forloop.counter}}</td>
+            <td>{{i.batch_name}}</td>
+            <td>{{i.batch_time}}</td>
+            <td>
+                <form action="{% url 'delete_batch' i.id %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </td>
+            </tbody>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+
+{% endblock %}
